@@ -31,7 +31,7 @@ const query = (connection, sql, params) => {
 
             // Handle error after the release.
             if (error) {
-                reject(err);
+                reject(error);
                 throw error;
                 s
             } else {
