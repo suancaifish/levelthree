@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        form {
+            width: 400px;
+            height: auto;
+            padding: 50px;
+            background-color: #f5f5f5;
+            margin: auto;
+        }
+
+        fieldset {
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        .btn {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <fieldset>
+            <legend>登录</legend>
+            <input type="text" id="name" placeholder="yourname" autocomplete="off"><br>
+            <input type="password" name="" id="password" placeholder="enter-password"><br>
+            <input type="button" value="登录" id="btn" class="btn">
+        </fieldset>
+        <fieldset>
+            <legend>注册</legend>
+            <input type="text" id="regname" placeholder="注册名"><br>
+            <input type="password" name="" id="regpassword" placeholder="password">
+            <br>
+            <input type="button" value="注册" class="btn" id="regbtn">
+        </fieldset>
+
+    </form>
+</body>
+<script src="./js/jquery.js"></script>
+<script>
+    //登录
+    $("#btn").click(() => {
+        let name = $('#name').val().trim();
+        let password = $('#password').val().trim();
+        if (name && password) {
+            $.ajax({
+                dataType: 'JSON',
+                type: 'POST',
+                data: {
+                    name,
+                    password
+                },
+                url: "http://localhost:3000/sign/sign",
+            }).done((data) => {
+                if (data == "登录成功") {
+                    $('#name').val('');
+                    $('#password').val('');
+                }
+                // console.log(data);
+                alert(data);
+
+            })
+        } else {
+            alert('请输入完整登录信息');
+        }
+    })
+
+    //注册
+</script>
+<script>
+    (function () {
+        $('#regbtn').on('click', () => {
+            let regname = $('#regname').val().trim();
+            let regpassword = $('#regpassword').val().trim();
+            // console.log(regname, regpassword);
+
+            if (regname && regpassword) {
+                $.ajax({
+                    dataType: 'JSON',
+                    type: 'POST',
+                    data: {
+                        regname,
+                        regpassword
+                    },
+                    url: "http://localhost:3000/sign/add",
+                }).done((data) => {
+                    if (data == "注册成功") {
+                        $('#regname').val('');
+                        $('#regpassword').val('');
+                    }
+                    // console.log(data);
+                    alert(data + '用户名是  ' + regname);
+                })
+            } else {
+                alert('请输入完整登录信息');
+            }
+        })
+    })()
+</script>
+
+</html>
