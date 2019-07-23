@@ -63,10 +63,8 @@ const insert = (col, params) => {
 
 
         collection.insertMany(params, function (err, result) {
-            // assert.equal(err, null);
-            // assert.equal(3, result.result.n);
-            // assert.equal(3, result.ops.length);
-            // callback(result);
+
+            // console.log(result);
 
             if (err) {
                 reject(err);

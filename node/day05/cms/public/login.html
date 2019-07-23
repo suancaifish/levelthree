@@ -8,98 +8,108 @@
     <title>Document</title>
     <style>
         form {
-            height: 300px;
-            width: 200px;
-            padding: 30px;
+            width: 400px;
+            height: auto;
+            padding: 50px;
             background-color: #f5f5f5;
-            border-radius: 5px;
             margin: auto;
         }
 
-        p {
-            font-size: 12px;
+        fieldset {
+            border-radius: 10px;
+            margin: 10px;
+        }
+
+        .btn {
+            margin-top: 5px;
         }
     </style>
-    <!-- <link rel="stylesheet" href="styles/bootstrap.css">
-    <link rel="stylesheet" href="styles/signin.css"> -->
 </head>
 
 <body>
-    <!-- <form class="form-signin">
-        <img class="mb-4" src="###" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <p class="mt-5 mb-3 text-muted">© 2017-2018</p>
-    </form> -->
-    <form action="">
+    <form>
         <fieldset>
-            <input type="text" id="email" placeholder="email"><br>
-            <input type="password" id="pw" placeholder="enter-password"><br>
-            <button>登录</button>
+            <legend>登录</legend>
+            <input type="text" id="name" placeholder="yourname" autocomplete="off"><br>
+            <input type="password" name="" id="password" placeholder="enter-password"><br>
+            <input type="button" value="登录" id="btn" class="btn">
         </fieldset>
         <fieldset>
-            <p> 用户名：<input type="text" id="regname"></p>
-            <p>密码 ：<input type="password" id="regpw"></p>
-            <p> email：<input type="email" id="regemail"></p>
-            <input type="button" value="注册" id="reg">
+            <legend>注册</legend>
+            <input type="text" id="regname" placeholder="注册名" autocomplete="off"><br>
+            <input type="password" name="" id="regpassword" placeholder="password">
+            <br>
+            <input type="button" value="注册" class="btn" id="regbtn">
         </fieldset>
+
     </form>
-    <script src="./scripts/jquery.js"></script>
-    <script>
-        //登录
-        $('button').click(() => {
-            let email = $('#email').val();
-            let password = $('#pw').val();
+</body>
+<script src="./jquery.js"></script>
+<script>
+    //登录
+    $("#btn").click(() => {
+        let name = $('#name').val().trim();
+        let password = $('#password').val().trim();
+
+
+
+        if (name && password) {
             $.ajax({
                 dataType: 'JSON',
-                type: "POST",
+                type: 'POST',
                 data: {
-                    email,
+                    name,
                     password
                 },
                 url: "http://localhost:3000/sign/login",
-
             }).done((data) => {
-                // console.log(data);
-                alert(data)
+                if (data == "登录成功") {
+                    document.cookie = "name=" + "result";
+                    $('#name').val('');
+                    $('#password').val('');
+
+                }
+                console.log(data);
+                // alert(data.result);
+                console.log(data.result);
+
             })
-        })
+        } else {
+            alert('请输入完整登录信息');
+        }
+    })
 
-
-
-        //注册
-        $('#reg').click(() => {
+    //注册
+</script>
+<script>
+    (function () {
+        $('#regbtn').on('click', () => {
             let regname = $('#regname').val().trim();
-            let regpw = $('#regpw').val().trim();
-            let regemail = $('#regemail').val().trim();
-            if (regname && regpw && regemail) {
+            let regpassword = $('#regpassword').val().trim();
+            // console.log(regname, regpassword);
+
+            if (regname && regpassword) {
                 $.ajax({
                     dataType: 'JSON',
                     type: 'POST',
                     data: {
                         regname,
-                        regpw,
-                        regemail
+                        regpassword
                     },
-                    url: 'http://localhost:3000/sign/reg'
+                    url: "http://localhost:3000/sign/reg",
                 }).done((data) => {
-                    console.log(data);
+                    if (data == "注册成功") {
+                        $('#regname').val('');
+                        $('#regpassword').val('');
+                    }
+                    // console.log(data);
+                    alert(data + '用户名是  ' + regname);
                 })
             } else {
-                alert('请输入完整信息');
+                alert('请输入完整登录信息');
             }
-
         })
-    </script>
-</body>
+    })()
+</script>
 
 </html>

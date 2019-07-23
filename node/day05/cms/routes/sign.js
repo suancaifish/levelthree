@@ -6,6 +6,12 @@ const {
 } = require('../libs/mdb')
 /* GET users listing. */
 
+const {
+    createToken, //加密
+    decodeToken, //解码
+    checkToken //校验
+} = require('../libs/token')
+
 router.use((req, res, next) => {
     // 全局添加
     res.append("Access-Control-Allow-Origin", "*");
@@ -14,19 +20,28 @@ router.use((req, res, next) => {
 
 router.post('/login', async function (req, res, next) {
     let {
-        email,
+        name,
         password
     } = req.body;
     // console.log(req.body);
 
     let data = await find('students', {
-        email: `${email}`,
+        name: `${name}`,
         password: `${password}`
     });
+    let token = createToken({
+        name: name
+        // password: password
+    }, 300)
+    console.log(token);
     if (data.length) {
-        res.json("登录成功");
+        res.json({
+            result: '登录成功',
+            lingpai: token
+        });
+
     } else {
-        res.json("登录失败");
+        res.json('登录失败');
     }
     // // res.send(JSON.stringify(data));
 
@@ -37,15 +52,15 @@ router.post('/login', async function (req, res, next) {
 router.post('/reg', async function (req, res, next) {
     let {
         regname,
-        regpw,
+        regpassword,
         regemail
     } = req.body;
-    // console.log(req.body);
+    console.log(req.body);
 
     let data = await insert('students', [{
-        name: `${regname}`,
-        password: `${regpw}`,
-        email: `${regemail}`
+        name: regname,
+        password: regpassword
+        // email: `${regemail}`
     }]);
 
     // console.log(data);
@@ -58,5 +73,11 @@ router.post('/reg', async function (req, res, next) {
 
 
 });
+
+// router.get('/cookie', async function (req, res, next) {
+
+//     res.json('cookie');
+// });
+
 
 module.exports = router;

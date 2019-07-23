@@ -28,7 +28,11 @@ router.post('/add', async function (req, res, next) {
     }])
 
     console.log(data.result);
-    // if()
+    if (data.result.ok) {
+        res.json('添加成功')
+    } else {
+        res.json('添加失败')
+    }
 
 });
 

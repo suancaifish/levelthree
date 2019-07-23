@@ -14,6 +14,11 @@ $('#setbtn').click(() => {
         },
         url: 'http://localhost:3000/set/add'
     }).done((result) => {
-        console.log(result);
+        // console.log(result);
+
+        $('#required').val('');
+        $('#email').val('');
+        $('#password').val('');
+        alert(result);
     })
 })
