@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div id="box">
+        <p>{{name}}</p>
+        <p>{{age+2}}</p>
+        <p>{{skill[1]}}</p>
+        <p>{{obj.height}}</p>
+        {{html}}
+    </div>
+    <script src="../vue.js"></script>
+
+    <script>
+        var vm = new window.Vue({
+            //选项
+            el: '#box',
+            //Modle 数据层
+            data: {
+                name: 'huahua',
+                age: 18,
+                skill: ['UI', 'money'],
+                obj: {
+                    height: '150cm',
+                    weight: '45kg'
+                },
+                html: `<p>123</p>`
+            }
+        })
+        console.log(vm);
+    </script>
+</body>
+
+</html>

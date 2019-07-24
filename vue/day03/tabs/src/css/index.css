@@ -1,0 +1,83 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul li {
+    list-style: none;
+}
+
+div {
+    height: 400px;
+    width: 700px;
+    margin: 10px 0 0 10px;
+    border: 1px solid #ccc;
+}
+
+.tablist {
+    height: 40px;
+    width: 100%;
+}
+
+.tablist li {
+    width: 25%;
+    height: 100%;
+
+    box-sizing: border-box;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    float: left;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.tablist li:nth-last-child(1) {
+    border-right: none;
+}
+
+.tabsbox li {
+    height: 360px;
+    width: 100%;
+    background-color: pink;
+    text-align: center;
+    line-height: 360px;
+    font-size: 100px;
+    color: #fff;
+}
+
+.tabsbox li:nth-child(2) {
+    background-color: blue;
+}
+
+.tabsbox li:nth-child(3) {
+    background-color: green;
+}
+
+.tabsbox li:nth-child(4) {
+    background-color: orange;
+}
+
+.tabsbox li:nth-child(n+2) {
+    /* display: none; */
+}
+
+.active0 {
+    background-color: pink;
+    border-bottom: none;
+}
+
+.active1 {
+    background-color: blue;
+    border-bottom: none;
+}
+
+.active2 {
+    background-color: green;
+    border-bottom: none;
+}
+
+.active3 {
+    background-color: orange;
+    border-bottom: none;
+}
