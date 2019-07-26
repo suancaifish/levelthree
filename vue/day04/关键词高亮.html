@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            height: 400px;
+            width: 600px;
+            background-color: #ddd;
+        }
+
+        span {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo">
+
+
+    </div>
+
+
+
+    <script src="./vue.js"></script>
+    <script>
+        var vm = new Vue({
+            el: '#demo',
+            data: {
+                word: '',
+                content: '在众多消费领域，中国已与世界高度融合，未来还有广阔空间。据麦肯锡预测，到2030年，58%的中国家庭有望跻身“大众富裕”或以上阶层，中国消费增长可能高达约6万亿美元，相当于美国和西欧的总和，中国将从新兴经济体进口更多劳动密集型商品，从发达国家进口更多优质商品，帮助其贸易伙伴创造更多就业'
+            },
+            template: `
+            
+            <div>
+                <input type="text" v-model="word" @change="">
+                <p>{{content}}</p>
+            </div>
+            `,
+            computed: {
+                wordTrans() {
+                    let wordTrans = '<span>' + this.word + '</span>'
+                    this.word = wordTrans;
+                    // return wordTrans
+                },
+
+            },
+            watch: {
+
+            }
+
+        })
+        setInterval(() => {
+            console.log(vm.word);
+        }, 300);
+    </script>
+</body>
+
+</html>

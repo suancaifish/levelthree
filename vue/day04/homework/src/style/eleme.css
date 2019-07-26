@@ -1,0 +1,52 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+header {
+
+    width: 500px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    background-color: rgb(17, 124, 185);
+    margin: auto;
+    margin-bottom: 30px;
+
+}
+
+input {
+    height: 30px;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    margin-left: 25px;
+}
+
+.tit {
+    height: 40px
+}
+
+.tit-left {
+    float: left;
+    width: 150px;
+    height: 100%;
+    
+    margin-left: 25px;
+    line-height: 40px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #fff;
+    text-align: left;
+}
+
+p {
+    display: block;
+    float: left;
+    width: 150px;
+    height: 100%;
+    line-height: 40px;
+
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+}

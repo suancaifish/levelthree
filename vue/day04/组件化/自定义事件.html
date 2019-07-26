@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        header {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            color: #fff;
+            font-size: 20px;
+            background-color: yellowgreen;
+            margin-bottom: 5px;
+        }
+    </style>
+    <div id="demo">
+
+
+    </div>
+    <script src="../vue.js"></script>
+
+    <script>
+        var vm = new Vue();
+        //全局注册
+        Vue.component('my-footer', {
+
+
+            //M
+            data() {
+                return {
+                    name: 'huahua'
+                }
+            },
+
+            //V
+            template: `
+            <div>
+                底部组件  
+                <input v-model="name"/> 
+                <button @click="send">传递数据</button>
+            </div>
+            `,
+            methods: {
+                send() {
+                    // 触发一个事件为toHeader，并且传输this.name数据
+                    vm.$emit('toHeader', this.name);
+                }
+            }
+        })
+
+
+        Vue.component('my-header', {
+            template: `
+                <header>
+                    头部组件{{this.name}}
+                        </header>
+            `,
+            data() {
+                return {
+                    name: 'fafa'
+                }
+            },
+            mounted() {
+                vm.$on('toHeader', (data) => {
+                    console.log(data);
+                    this.name = data
+                })
+            }
+        })
+
+        //根容器
+        new Vue({
+            el: '#demo',
+            data: {
+                name: 'huahua'
+            },
+            template: `
+                <div>
+                    <my-header></my-header>
+                    <my-header></my-header>
+                    <my-header></my-header>
+                    <my-footer></my-footer>
+                    <my-footer></my-footer>
+                   
+                </div>
+            
+            `
+        })
+    </script>
+</body>
+
+</html>

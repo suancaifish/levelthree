@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        header {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            color: #fff;
+            font-size: 20px;
+            background-color: yellowgreen;
+            margin-bottom: 5px;
+        }
+    </style>
+    <div id="demo">
+
+
+    </div>
+    <script src="../vue.js"></script>
+
+    <script>
+        const myFooter = {
+
+            //M
+            data() {
+                return {
+                    name: 'huahua'
+                }
+            },
+
+            //V
+            template: `
+            <div>
+            底部组件  
+            <input v-model="name"/> 
+            </div>
+            `
+        }
+
+
+        //根容器
+        new Vue({
+            el: '#demo',
+            template: `
+                <div>
+                    <my-header></my-header>
+                    <my-header></my-header>
+                    <my-header></my-header>
+
+                   
+                </div>
+            
+            `,
+
+            //局部注册
+            components: {
+                'my-footer': myFooter,
+                'my-header': {
+                    components: {
+                        'my-footer': myFooter,
+                    },
+                    template: `
+                        <header>
+                            头部组件
+                            <my-footer></my-footer>
+                        </header>
+                    `
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        header {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            color: #fff;
+            font-size: 20px;
+            background-color: yellowgreen;
+            margin-bottom: 5px;
+        }
+    </style>
+    <div id="demo">
+
+
+    </div>
+    <script src="../vue.js"></script>
+
+    <script>
+        Vue.component('my-header', {
+            props: ['title', 'color', 'obj'],
+            template: `
+            <header :style="{background:color}" v-html="title"></header>
+            `
+
+        })
+
+        //根容器
+        new Vue({
+            el: '#demo',
+            data: {
+                num: 1000,
+                title: 'wechat',
+                obj: {
+                    name: 'huahua',
+                    skill: ['ps']
+                }
+            },
+            template: `
+                <div>
+                    <my-header :obj="obj" color="grey" :title="title"></my-header>
+                    <my-header color="blue"  title="支付宝" ></my-header>
+                    <my-header color="pink"  title="阿里"></my-header>
+                    
+                   
+                </div>
+            
+            `
+        })
+    </script>
+</body>
+
+</html>
