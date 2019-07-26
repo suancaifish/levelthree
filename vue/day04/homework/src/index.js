@@ -28,9 +28,10 @@ Vue.component('one-header', {
             }
 
             console.log(666);
-
+            vm.$forceUpdate();
 
         }
+
     }
 })
 
