@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="demo"></div>
+    <script src="../vue.js"></script>
+    <script>
+        new Vue({
+            el: '#demo',
+            data: {
+                version: Vue.version,
+                btnText: '提交'
+            },
+            template: `
+                <div>
+                    <p v-text="version"></p>
+                    <button @click="dbclick" v-text="btnText"></button>
+                </div>
+            `,
+            methods: {
+                dbclick() {
+                    console.log(this.version);
+                    this.version = '1.2.30';
+                    console.log('M:', this.version, 'V:', this.$el.innerHTML);
+
+                    if (this.btnText == '撤回') {
+                        this.btnText = '提交';
+                    } else {
+                        this.btnText = '撤回';
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

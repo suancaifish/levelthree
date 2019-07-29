@@ -44,7 +44,7 @@ const vm = new Vue({
     },
     template: `
     <div>
-        <one-header title="未能获取地址" holder="搜索饿了么商家，商品名称" v-show="tai[0]" >
+        <one-header title="未能获取地址" holder="搜索饿了么商家，商i品名称" v-show="tai[0]" >
         </one-header>
 
         <one-header title="<" addr="选择收货地址" holder="请输入地址" v-show="tai[1]" @click="huan()">

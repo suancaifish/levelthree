@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+
+<body>
+    <div id="demo"></div>
+    <script src="../vue.js"></script>
+    <script>
+        // Vue.com
+        var vm = new Vue({
+            el: '#demo',
+            data: {
+                name: '生命周期',
+                vnode: null
+            },
+            template: `<div>
+                            <div>{{name}}</div>
+                            <button @click="btnclick">点击提交</button>
+                        </div>
+            `,
+            methods: {
+                btnclick() {
+                    // console.log(666);
+                    this.name = '生命周期01'
+                }
+            },
+            // render(createElement) {
+            //     console.log('--------render--------')
+            //     var vnode = createElement('div', null, this.name)
+            //     this.vnode = vnode
+            //     console.log('vnode', vnode)
+            //     // 直接操作虚拟DOM，虚拟DOM还没挂载到真实DOM
+            //     vnode.tag = 'p' //修改标签名
+            //     vnode.children[0].text = 'hi'
+            //     return vnode
+            // },
+            // 钩子 容器诞生前 组件诞生前
+            // 诞生前，没数据没视图
+            beforeCreate() {
+                console.log('--------beforeCreate--------')
+                console.log('V', this.$el)
+                console.log('M', this.$data)
+            },
+            created() {
+                // 视图没有
+                // 数据就位了
+                console.log('--------created--------')
+                console.log('V', this.$el)
+                console.log('M', this.$data)
+            },
+            beforeMount() {
+                // 模板准备中，但是拿到挂载点
+                // 数据也准备
+                // 数据放进模板了，但是模板还没挂载到真实DOM
+                console.log('--------beforeMount--------')
+                console.log('V', this.$el)
+                console.log('M', this.$data)
+            },
+            mounted() {
+                console.log('--------mounted--------')
+                console.log('V', this.$el)
+                console.log('M', this.$data)
+            },
+            beforeUpdate() {
+                //数据更新了就触发,更新的时候可以做节点的操作  替换或者删除，连接数据库验证数据的有效性
+                console.log('--------beforeUpdate--------')
+                console.log('V', this.$el)
+                console.log('M', this.$data)
+                if (this.name == '01') {
+                    console.log('数据有效');
+                } else {
+                    console.log('数据无效');
+                }
+            },
+            updated() {
+                console.log('--------update--------')
+                console.log('V', this.$el)
+                console.log('M', this.$data)
+                this.$nextTick(function () {
+                    //所有渲染完了之后这里
+                    // Code that will run only after the
+                    // entire view has been re-rendered
+                    console.log('这里渲染完了');
+                })
+            },
+            activated() {
+                console.log('--------activated--------')
+                console.log('V', this.$el)
+                console.log('M', this.$data)
+            }
+        })
+    </script>
+</body>
+
+</html>

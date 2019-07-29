@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="demo"></div>
+    <script src="../vue.js"></script>
+    <script>
+        new Vue({
+            el: '#demo',
+            data: {
+                version: Vue.version
+            },
+            template: `
+                <div>
+                    <p v-text=""></p>
+                    <button @click="change">Ok</button>
+                </div>
+            `,
+            methods: {
+                change() {
+                    let obj = {
+                        name: 'huahua',
+                        skill: ['ps', 'html']
+                    }
+                    console.log(obj);
+
+                    Vue.set(obj, 'name', 'fafa')
+                    Vue.set(obj, 'skill', ['html5', 'psui'])
+
+                    Vue.delete(obj, 'name')
+                    console.log(obj);
+                }
+            }
+
+
+        })
+    </script>
+</body>
+
+</html>

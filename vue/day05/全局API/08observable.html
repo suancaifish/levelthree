@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <script src="../vue.js"></script>
+
+    <script>
+        const state = Vue.observable({
+            count: 0,
+            name: 'huahua',
+            age: 19
+        })
+
+        console.log(state.count);
+        new Vue({
+            el: '#demo',
+            computed: {
+                // 从仓库导出一个count数据
+                countcode() {
+
+                    return state.count
+                }
+
+            },
+            template: `<div>
+                            <p>{{countcode}}</p>
+                            <button @click="test">Ok</button>
+                        </div>`,
+            methods: {
+                test() {
+
+
+                    state.count = 888;
+
+                }
+            }
+
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="demo"></div>
+    <script src="../vue.js"></script>
+    <script>
+        var myfooter = Vue.extend({
+            data() {
+                return {
+                    name: '第二个组件'
+                }
+            },
+            template: `<div>
+                            <p v-text="name"></p>
+                        </div>`
+        })
+
+
+
+        //放入自定义标签初始化
+        Vue.component('my-header', myfooter)
+        Vue.component('my-footer', {
+            data() {
+                return {
+                    name: '第一个组件'
+                }
+            },
+            template: `<div>
+                             <p v-text="name"></p>
+                        </div>`
+        })
+
+        new Vue({
+            el: '#demo',
+            template: `
+            <div>
+                    <my-footer></my-footer>
+                    <my-header></my-header>
+             </div>
+            `
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <script src="../vue.js"></script>
+
+    <script>
+        Vue.mixin({
+            data() {
+                return {
+                    name: 'huahua'
+                }
+            },
+            watch: {
+                name() {
+                    console.log(this.name);
+                }
+            },
+            methods: {
+                test() {
+                    console.log(1);
+                }
+            }
+        })
+        //混合 把数据或者模板添加进全局的环境当中，有可能会破坏组件环境
+
+        new Vue({
+            el: '#demo',
+            data: {
+                version: Vue.version
+            },
+            template: `
+            <div>
+                <p v-text="">{{version}}</p>
+                <button @click="test">ok</button>
+                </div>
+            `,
+            methods: {
+                test() {
+                    this.name = 'fafa'
+                    console.log(44);
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

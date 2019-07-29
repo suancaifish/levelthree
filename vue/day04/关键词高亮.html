@@ -13,8 +13,10 @@
             background-color: #ddd;
         }
 
-        span {
+
+        b {
             background-color: yellow;
+            font-weight: normal;
         }
     </style>
 </head>
@@ -38,26 +40,30 @@
             template: `
             
             <div>
-                <input type="text" v-model="word" @change="">
-                <p>{{content}}</p>
+                <input type="text" v-model="word">
+                <p v-html="wordTrans">{{content}}</p>
             </div>
             `,
+
+            watch: {
+                word() {
+                    // console.log(this.word);
+                    return this.word
+                }
+            },
             computed: {
                 wordTrans() {
-                    let wordTrans = '<span>' + this.word + '</span>'
-                    this.word = wordTrans;
-                    // return wordTrans
-                },
+                    var lx = new RegExp(this.word, 'ig'); //查找到的数
+                    // console.log(lx);
+                    var res = '<b>' + this.word + '</b>'; //把查找到的数做修饰
+                    var light = this.content.replace(lx, res); //替换
 
-            },
-            watch: {
+                    return light;
+                },
 
             }
 
         })
-        setInterval(() => {
-            console.log(vm.word);
-        }, 300);
     </script>
 </body>
 

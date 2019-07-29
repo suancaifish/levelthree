@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <script src="../vue.js"></script>
+
+
+
+    <script>
+        // Vue.directive('huahua', (el, binding, vnode) => {
+        //     console.log(el, binding, vnode);
+        // })
+        // new Vue({
+        //     el: '#demo',
+        //     data: {
+
+        //     },
+        //     template: ` <div>
+        //                     <p v-huahua="'red'">2232</p>
+        //                 </div>
+        //     `
+
+        // })
+
+        Vue.filter('cur', (val) => {
+            return `￥${val}`;
+        })
+        new Vue({
+            el: '#demo',
+            data: {
+                version: Vue.version
+            },
+            template: `
+            <div>
+                <p>{{version}}</p>
+                <p>{{version|cur}}</p>
+            </div>
+            
+            `
+        })
+    </script>
+</body>
+
+</html>
