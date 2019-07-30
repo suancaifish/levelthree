@@ -14,8 +14,14 @@
           data-query="channel=__all__"
           class="btn cur"
         >推荐</a>
-        <a href="javascript:void(0)" data-channel="video" data-query="channel=video" class="btn">视频</a>
         <a
+          href="javascript:void(0)"
+          data-channel="video"
+          data-query="channel=video"
+          class="btn"
+          v-for="(item,index) in items"
+        >{{item.item}}</a>
+        <!--    <a
           href="javascript:void(0)"
           data-channel="news_hot"
           data-query="channel=news_hot"
@@ -74,8 +80,32 @@
           data-channel="news_finance"
           data-query="channel=news_finance"
           class="btn"
-        >财经</a>
+        >财经</a>-->
       </div>
     </div>
   </div>
 </template>
+
+
+<script>
+export default {
+  data() {
+    return {
+      items: [
+        // { item: "推荐" },
+        { item: "视频" },
+        { item: "热点" },
+        { item: "社会" },
+        { item: "娱乐" },
+        { item: "军事" },
+        { item: "科技" },
+        { item: "汽车" },
+        { item: "房产" },
+        { item: "家具" },
+        { item: "体育" },
+        { item: "财经" }
+      ]
+    };
+  }
+};
+</script>
