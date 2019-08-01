@@ -30,6 +30,8 @@
         <van-grid>
           <van-grid-item
             v-for="(k,index) in kingkongListComputed"
+            :to="`/detail/${index}/yao`"
+            
             :key="index"
             :icon="k.image_hash"
             :text="k.name"
@@ -41,6 +43,7 @@
         <van-grid>
           <van-grid-item
             v-for="(k,index) in kingkongListComputed2"
+            @click="navTo(index)"
             :key="index"
             :icon="k.image_hash"
             :text="k.name"
@@ -213,14 +216,6 @@
         <!---->
       </section>
     </section>
-
-    <!-- 标签栏 -->
-    <van-tabbar v-model="active">
-      <van-tabbar-item icon="home-o">首页</van-tabbar-item>
-      <van-tabbar-item icon="search">发现</van-tabbar-item>
-      <van-tabbar-item icon="friends-o">订单</van-tabbar-item>
-      <van-tabbar-item icon="setting-o">我的</van-tabbar-item>
-    </van-tabbar>
   </div>
 </template>
 
@@ -240,7 +235,17 @@ export default {
       active: 0
     };
   },
-  methods: {},
+  methods: {
+    navTo(id) {
+      this.$router.push({
+        name: "detail",
+        params: {
+          id,
+          name: "huahua"
+        }
+      });
+    }
+  },
   computed: {
     kingkongListComputed() {
       // 切割成八个宫格
@@ -282,7 +287,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .van-field__control {
   text-align: center;
 }
