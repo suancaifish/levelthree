@@ -71,17 +71,17 @@ const router = new VueRouter({
 
 
 router.beforeEach((to, from, next) => {
-  // let islogin = 0;
-  next();
+  let islogin = 1;
+
   // ...
-  // if (islogin || to.path === 'sign' || to.path === '/tabbar/homer') {
+  if (islogin || to.path === '/sign' || to.path === '/tabbar/homer') {
+    next();
+  } else {
+    router.push({
+      name: 'sign'
+    })
 
-  // } else {
-  //   router.push({
-  //     name: 'sign'
-  //   })
-
-  // }
+  }
 })
 
 
