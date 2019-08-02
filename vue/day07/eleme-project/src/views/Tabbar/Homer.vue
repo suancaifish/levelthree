@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header class="index-JMUSj_0">
+    <header class="index-JMUSj_0" @click="Addr">
       <div class="index-1DPx9_0">
         <div aria-label="当前地址：沙太中路竹园小区(京溪路)，轻点两下重新选择" role="button" class="index-2S5Ah_0">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 31" class="index-okfdP_0">
@@ -10,7 +10,7 @@
               d="M22.116 22.601c-2.329 2.804-7.669 7.827-7.669 7.827-.799.762-2.094.763-2.897-.008 0 0-5.26-4.97-7.643-7.796C1.524 19.8 0 16.89 0 13.194 0 5.908 5.82 0 13 0s13 5.907 13 13.195c0 3.682-1.554 6.602-3.884 9.406zM18 13a5 5 0 1 0-10 0 5 5 0 0 0 10 0z"
             />
           </svg>
-          <span class="index-2uW_v_0">沙太中路竹园小区(京溪路)</span>
+          <span class="index-2uW_v_0" v-text="this.adder"></span>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14 8" class="index-2iXz3_0">
             <path
               fill="#FFF"
@@ -22,7 +22,12 @@
       </div>
     </header>
     <!-- 搜索 -->
-    <van-search placeholder="请输入搜索关键词" v-model="value" background="#0085ff" />
+    <van-search
+      placeholder="请输入搜索关键词"
+      v-model="value"
+      background="linear-gradient(90deg, #0af, #0085ff)"
+      :class="{searchFixed}"
+    />
 
     <!-- 宫格+轮播 -->
     <van-swipe :autoplay="1000000" indicator-color="#fe7100">
@@ -31,7 +36,6 @@
           <van-grid-item
             v-for="(k,index) in kingkongListComputed"
             :to="`/detail/${index}/yao`"
-            
             :key="index"
             :icon="k.image_hash"
             :text="k.name"
@@ -126,7 +130,7 @@
               </h3>
               <ul class="index-supportWrap_2lTcxr2">
                 <!---->
-                <span class="index-omit_1q3Tw0_">···</span>
+                <span class="index-omit_1q3Tw0_"></span>
               </ul>
             </section>
             <section class="index-line_2-iYR1A">
@@ -232,7 +236,9 @@ export default {
       value1: 0,
       menu: [],
       goods: [],
-      active: 0
+      active: 0,
+      searchFixed: false,
+      adder: ""
     };
   },
   methods: {
@@ -244,6 +250,10 @@ export default {
           name: "huahua"
         }
       });
+    },
+    Addr() {
+      //点击跳转到地址页面
+      this.$router.push("/Address");
     }
   },
   computed: {
@@ -272,6 +282,24 @@ export default {
       "https://www.easy-mock.com/mock/5d402d6799acfe0359e0189d/main/goods"
     );
     this.goods = goods.data.items;
+  },
+  mounted() {
+    window.onscroll = () => {
+      if (window.scrollY >= 54) {
+        this.searchFixed = true;
+      } else {
+        this.searchFixed = false;
+      }
+    };
+  },
+  deactivated() {
+    window.onscroll = null;
+  },
+  activated() {
+    this.adder =
+      this.$store.state.province +
+      this.$store.state.city +
+      this.$store.state.county;
   },
   filters: {
     newMenu(menu) {
@@ -321,6 +349,15 @@ export default {
 }
 .van-divider {
   justify-content: center;
+}
+.van-search {
+  background-image: linear-gradient(90deg, #0af, #0085ff);
+}
+.searchFixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99;
 }
 </style>
 

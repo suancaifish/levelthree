@@ -13,11 +13,13 @@ import router from './router'
 //引入vant组件
 import Vant from './vant/index'
 Vant();
+import store from './store'
 
 Vue.config.productionTip = false
 
 
 new Vue({
+  store,
   router,
   render: h => h(App)
 

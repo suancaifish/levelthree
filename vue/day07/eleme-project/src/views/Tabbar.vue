@@ -1,8 +1,8 @@
 <template>
   <div>
-
-    <router-view></router-view>
-    
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
     <!-- 标签栏 -->
     <van-tabbar v-model="active">
       <van-tabbar-item icon="home-o" to="homer">首页</van-tabbar-item>

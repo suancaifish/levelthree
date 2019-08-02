@@ -6,6 +6,7 @@ Vue.use(VueRouter)
 //定义组件
 import Tabbar from './views/Tabbar'
 import Sign from './views/Sign'
+import Address from './views/Address'
 
 //嵌套组件
 import Homer from './views/Tabbar/Homer.vue'
@@ -52,6 +53,10 @@ const routes = [{
     name: 'sign',
     path: '/sign',
     component: Sign,
+  }, {
+    name: 'address',
+    path: '/address',
+    component: Address
   },
   {
     //重定向
