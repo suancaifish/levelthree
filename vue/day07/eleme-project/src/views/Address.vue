@@ -25,11 +25,10 @@ export default {
       this.confirmList = val;
 
       this.title = "确认地址";
-      this.$store.state.province = this.confirmList[0].name;
+      this.$store.state.province = val[0].name;
       this.$store.state.city = this.confirmList[1].name;
       this.$store.state.county = this.confirmList[2].name;
       this.$router.push("/");
-     
     },
     onClickLeft() {
       this.$router.push("/");
