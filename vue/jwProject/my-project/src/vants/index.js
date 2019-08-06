@@ -15,7 +15,12 @@ import {
     //导航栏
     NavBar,
     Sidebar,
-    SidebarItem
+    SidebarItem,
+    //倒计时
+    CountDown,
+    //标签页
+    Tab,
+    Tabs
 } from "vant";
 
 
@@ -34,4 +39,6 @@ export default () => {
     Vue.use(NavBar);
     Vue.use(Sidebar);
     Vue.use(SidebarItem);
+    Vue.use(CountDown);
+    Vue.use(Tab).use(Tabs);
 }

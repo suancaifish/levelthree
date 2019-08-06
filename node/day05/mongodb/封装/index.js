@@ -11,18 +11,17 @@ const {
 
 
     //查
-    // let data = await find('students', {
-    //     email: '123@qq.com',
-    //     password: 123
-    // });
+    let data = await find('students', {
+        name: 'huahua'
+    });
 
 
     //增
-    let data = await insert('students', [{
-        // name: '陈+v',
-        // age: '20',
-        // email: 'aaa@qq.com'
-    }]);
+    // let data = await insert('students', [{
+    //     // name: '陈+v',
+    //     // age: '20',
+    //     // email: 'aaa@qq.com'
+    // }]);
 
     //改
     // let data = await Update('students', [{
@@ -37,7 +36,7 @@ const {
     // })
 
 
-    console.log(data.result);
+    console.log(data);
 
 
 

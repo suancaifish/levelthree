@@ -26,6 +26,7 @@ export default {
         width: "90%",
         left: "30px"
       }
+      
     };
   }
 };
