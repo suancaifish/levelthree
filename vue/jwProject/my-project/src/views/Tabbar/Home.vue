@@ -56,7 +56,6 @@
 
 
   
-
 <script>
 // @ is an alias to /=src
 import SwiperSide from "../../components/SwiperSide";

@@ -20,8 +20,22 @@ import {
     CountDown,
     //标签页
     Tab,
-    Tabs
+    Tabs,
+    //user用到的组件
+    Row,
+    Col,
+    Cell,
+    CellGroup,
+    //购物车组件
+    Tag,
+    Toast,
+    GoodsAction,
+    GoodsActionIcon,
+    GoodsActionButton,
+    //弹出层
+    Popup
 } from "vant";
+
 
 
 
@@ -41,4 +55,14 @@ export default () => {
     Vue.use(SidebarItem);
     Vue.use(CountDown);
     Vue.use(Tab).use(Tabs);
+    Vue.use(Row);
+    Vue.use(Col);
+    Vue.use(Cell);
+    Vue.use(CellGroup);
+    Vue.use(Tag);
+    Vue.use(Toast);
+    Vue.use(GoodsAction);
+    Vue.use(GoodsActionIcon);
+    Vue.use(GoodsActionButton);
+    Vue.use(Popup);
 }
