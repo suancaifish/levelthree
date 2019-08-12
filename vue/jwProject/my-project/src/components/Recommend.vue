@@ -62,6 +62,8 @@ export default {
 
 <style scoped>
 .recommend {
+  border-top: 10px solid #eee;
+
   margin-top: 0.222222rem;
   height: 1.777778rem;
   background-color: #fff;

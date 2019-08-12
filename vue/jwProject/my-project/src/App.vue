@@ -10,7 +10,5 @@
 
 
 <style>
-#app{
-  /* background-color: #ccc; */
-}
+
 </style>

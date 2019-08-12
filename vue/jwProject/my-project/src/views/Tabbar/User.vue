@@ -1,84 +1,84 @@
 <template>
-  <div class="bgcolor">
-    <div class="tophead">
-      <h1>
-        <van-icon name="envelop-o" size="22px" class="toptit" color="#fff" />
-        <p>设置</p>
-      </h1>
-    </div>
+    <div class="bgcolor">
+      <div class="tophead">
+        <h1>
+          <van-icon name="envelop-o" size="22px" class="toptit" color="#fff" />
+          <p>设置</p>
+        </h1>
+      </div>
 
-    <div class="account-top-con topFixed">
-      <!-- 用户登录 -->
-      <div class="account-info">
-        <div>
-          <a href="##3" class="userinfo">
-            <van-image
-              round
-              width="50px"
-              height="50px"
-              src="https://img.yzcdn.cn/vant/cat.jpeg"
-              class="imguesr"
-            />
-            <em>立即登录</em>
-          </a>
-          <a href="###" class="edu">
-            <p>查看乐卡额度</p>
-          </a>
+      <div class="account-top-con topFixed">
+        <!-- 用户登录 -->
+        <div class="account-info">
+          <div>
+            <a href="/#/login" class="userinfo">
+              <van-image
+                round
+                width="50px"
+                height="50px"
+                src="https://img.yzcdn.cn/vant/cat.jpeg"
+                class="imguesr"
+              />
+              <em>立即登录</em>
+            </a>
+            <a href="###" class="edu">
+              <p>查看乐卡额度</p>
+            </a>
+          </div>
+        </div>
+        <!-- 收藏、优惠券 -->
+        <div style="background: rgba(255,255,255,.2)">
+          <ul class="item-bd">
+            <li>
+              <div>
+                <h3>0</h3>
+                <span>优惠券</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <h3>0</h3>
+                <span>收藏</span>
+              </div>
+            </li>
+          </ul>
         </div>
       </div>
-      <!-- 收藏、优惠券 -->
-      <div style="background: rgba(255,255,255,.2)">
-        <ul class="item-bd">
-          <li>
-            <div>
-              <h3>0</h3>
-              <span>优惠券</span>
-            </div>
-          </li>
-          <li>
-            <div>
-              <h3>0</h3>
-              <span>收藏</span>
-            </div>
-          </li>
-        </ul>
-      </div>
+
+      <!-- 账单 -->
+      <van-cell-group class="user-group">
+        <van-cell icon="label-o" title="本月账单" is-link value="全部" class="fSize" />
+      </van-cell-group>
+      <!-- 订单 -->
+      <van-cell-group>
+        <van-cell icon="records" title="我的订单" is-link value="全部" class="fSize" />
+      </van-cell-group>
+
+      <van-row class="user-links">
+        <van-col span="6">
+          <van-icon name="pending-payment" />待付款
+        </van-col>
+        <van-col span="6">
+          <van-icon name="records" />待接单
+        </van-col>
+        <van-col span="6">
+          <van-icon name="tosend" />待发货
+        </van-col>
+        <van-col span="6">
+          <van-icon name="logistics" />已发货
+        </van-col>
+      </van-row>
+
+      <!-- 服务 -->
+      <van-cell-group class="mTop">
+        <van-cell class="fSize" icon="shopping-cart-o" title="我的购物车" is-link />
+        <van-cell class="fSize" icon="balance-pay" title="我的优惠券" is-link />
+        <van-cell class="fSize" icon="comment-o" title="我的预约" is-link />
+        <van-cell class="fSize" icon="debit-pay" title="我的银行卡" is-link />
+        <van-cell class="fSize" icon="bulb-o" title="安全中心" is-link />
+        <van-cell class="fSize" icon="service" title="客服中心" is-link />
+      </van-cell-group>
     </div>
-
-    <!-- 账单 -->
-    <van-cell-group class="user-group">
-      <van-cell icon="label-o" title="本月账单" is-link value="全部" class="fSize" />
-    </van-cell-group>
-    <!-- 订单 -->
-    <van-cell-group>
-      <van-cell icon="records" title="我的订单" is-link value="全部" class="fSize" />
-    </van-cell-group>
-
-    <van-row class="user-links">
-      <van-col span="6">
-        <van-icon name="pending-payment" />待付款
-      </van-col>
-      <van-col span="6">
-        <van-icon name="records" />待接单
-      </van-col>
-      <van-col span="6">
-        <van-icon name="tosend" />待发货
-      </van-col>
-      <van-col span="6">
-        <van-icon name="logistics" />已发货
-      </van-col>
-    </van-row>
-
-    <!-- 服务 -->
-    <van-cell-group class="mTop">
-      <van-cell class="fSize" icon="shopping-cart-o" title="我的购物车" is-link />
-      <van-cell class="fSize" icon="balance-pay" title="我的优惠券" is-link />
-      <van-cell class="fSize" icon="comment-o" title="我的预约" is-link />
-      <van-cell class="fSize" icon="debit-pay" title="我的银行卡" is-link />
-      <van-cell class="fSize" icon="bulb-o" title="安全中心" is-link />
-      <van-cell class="fSize" icon="service" title="客服中心" is-link />
-    </van-cell-group>
-  </div>
 </template>
 
 <script>
@@ -86,6 +86,7 @@ export default {};
 </script>
 
 <style lang="less" scoped>
+
 .bgcolor {
   background-color: #f5f7f6;
 }
@@ -160,7 +161,6 @@ export default {};
 .account-info {
   padding: 0.555556rem 0.416667rem 1.111111rem;
   overflow: hidden;
-  
 }
 .account-info a {
   display: block;
@@ -183,8 +183,8 @@ export default {};
   text-align: center;
   color: #fff;
 }
-.item-bd li:nth-child(1){
-    border-right: 2px solid rgba(255, 255, 255, 0.507);
+.item-bd li:nth-child(1) {
+  border-right: 2px solid rgba(255, 255, 255, 0.507);
 }
 .item-bd li h3 {
   font-size: 18px;
@@ -195,15 +195,15 @@ export default {};
   vertical-align: middle;
   margin-right: 0.138889rem;
 }
-.userinfo{
-    float: left;
+.userinfo {
+  float: left;
 }
-.edu{
-    float: right;
-    line-height: 50px;
-    font-size: 16px;
+.edu {
+  float: right;
+  line-height: 50px;
+  font-size: 16px;
 }
-.edu p{
-    margin-bottom: .186296rem;
+.edu p {
+  margin-bottom: 0.186296rem;
 }
 </style>

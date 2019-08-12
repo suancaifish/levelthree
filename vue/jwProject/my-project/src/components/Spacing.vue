@@ -7,15 +7,19 @@
 
     <van-tabs :border="false" title-active-color="pink">
       <van-tab v-for="(value,index) in Phonecontent" :key="index">
-        <div slot="title">
+        <div slot="title" :data-set="index" @click="getId(index)">
           <van-icon :name="Phonecontent[index].desc" :style="logoStyle" />
         </div>
         <!-- 列表内容 -->
         <ul class="lists-pro-brand">
-          <li v-for="(item,index) in value.floor_list[0].item_list" :key="index">
-            <a href>
+          <li
+            v-for="(item,index) in value.floor_list[0].item_list"
+            :key="index"
+            @click="linkTo(index)"
+            :data-set="index"
+          >
+            <a href="javascript:void(0);">
               <div class="item-img">
-                <!-- 根本找不到图片路径 -->
                 <img :src="item.fe_sku_pic" />
               </div>
               <div class="item-info">
@@ -55,13 +59,16 @@ export default {
     return {
       //手机品牌logo图片
       phoneLogo: [],
-
-      active: 2,
+      // active: 2,
       logoStyle: {
         width: "75px",
         height: "45px"
       },
-      Phonecontent: []
+      Phonecontent: [],
+      // logo对应的下边
+      id: 0,
+      // 对应商品的下标 默认0
+      id2: 0
     };
   },
   mounted() {
@@ -79,15 +86,38 @@ export default {
     let Phone = await this.$axios(
       "https://www.easy-mock.com/mock/5d4821222727b22ba5bbfd01/fenqile/phone"
     );
+    // console.log(Phone);
     this.phoneLogo = Phone.data.PhoneLogo;
     // console.log(this.phoneLogo);
     for (var i = 0; i < this.phoneLogo.length; i++) {
       this.Phonecontent.push(Phone.data.result_rows[i]);
     }
 
+    // 把手机数据放到仓库里
+    this.$store.state.Phonecontent = this.Phonecontent;
     // console.log(this.Phonecontent);
     //每个品牌对应的4条数据
     // console.log(this.Phonecontent[2].floor_list[0].item_list);
+  },
+  methods: {
+    getId(id) {
+      // console.log(id);
+      this.id = id;
+      //把值给到仓库
+      this.$store.state.id = id;
+    },
+    linkTo(id2) {
+      // console.log(id2);
+      this.id2 = id2; 
+      this.$store.state.id2 = id2;
+      this.$router.push({
+        name: "details",
+        params: {
+          id: this.id,
+          id2: this.id2
+        }
+      });
+    }
   }
 };
 </script>
@@ -95,12 +125,12 @@ export default {
 
 <style scoped>
 .spacing-tit {
-  border-top: 1px solid #eee;
+  border-top: 10px solid #eee;
   margin-top: 0.185185rem;
   margin-bottom: 0;
 }
 .spacing-tit p {
-  padding-top: .285185rem;
+  padding-top: 0.285185rem;
   font-size: 16px;
   margin-left: 15px;
 }

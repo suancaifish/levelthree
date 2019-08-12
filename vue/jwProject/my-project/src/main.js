@@ -19,11 +19,12 @@ import Vant from './vants/index';
 Vant();
 
 import Antds from './Antds/index';
+import store from './store'
 Antds();
 
 
 new Vue({
-
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')

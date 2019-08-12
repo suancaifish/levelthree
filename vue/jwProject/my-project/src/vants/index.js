@@ -33,7 +33,16 @@ import {
     GoodsActionIcon,
     GoodsActionButton,
     //弹出层
-    Popup
+    Popup,
+    // 短信输入框
+    Field,
+    // 分割线
+    Divider,
+    //文字提醒
+    //粘性布局
+    Sticky,
+    SubmitBar 
+
 } from "vant";
 
 
@@ -65,4 +74,9 @@ export default () => {
     Vue.use(GoodsActionIcon);
     Vue.use(GoodsActionButton);
     Vue.use(Popup);
+    Vue.use(Field);
+    Vue.use(Divider);
+    Vue.use(Sticky);
+    Vue.use(SubmitBar);
+
 }

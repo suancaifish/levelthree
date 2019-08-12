@@ -5,7 +5,6 @@
         <van-icon name="wap-home" slot="right" color="#01106E" size="20px" />
       </van-nav-bar>
     </van-sticky>
-
     <!-- 图片区域 -->
     <van-swipe class="goods-swipe" @change="onChange">
       <van-swipe-item v-for="(item,index) in thumb" :key="index">
@@ -18,17 +17,17 @@
         <div class="goods-price">
           <span>
             ￥
-            <b class="price" v-text="phoneTitle.real_amount">38</b>
+            <b class="price" v-text="phoneInfo.real_amount">38</b>
           </span>
-          <del class="odlprice">￥{{phoneTitle.amount}}</del>
+          <del class="odlprice">￥{{phoneInfo.mart_amount}}</del>
         </div>
 
         <div class="fenqi">
           <span class="mon">
             <em>￥</em>
-            {{phoneTitle.mon_pay}}
+            {{phoneInfo.mon_pay}}
           </span>
-          <span class="qishu">x{{phoneTitle.fq_num}}期 ></span>
+          <span class="qishu">x{{phoneInfo.fq_num}}期 ></span>
         </div>
       </van-cell>
       <!-- 价格 -->
@@ -39,10 +38,10 @@
             <span class="zheng">正品</span>
           </div>
 
-          <div class="goods-title" v-text="phoneTitle.product_name"></div>
+          <div class="goods-title" v-text="phoneInfo.product_name"></div>
         </div>
 
-        <div class="mianshu" v-text="phoneTitle.product_desc"></div>
+        <div class="mianshu" v-text="phoneInfo.product_desc"></div>
       </van-cell>
     </van-cell-group>
 
@@ -122,6 +121,12 @@ export default {
       show: false,
       id: "",
       id2: "",
+
+      // =====
+      searchid: "",
+      searchgoods: [],
+      phoneInfo: "",
+      // ====
       Phonecontent: [],
       phoneTitle: ""
     };
@@ -159,33 +164,34 @@ export default {
     this.id2 = this.$store.state.id2;
     this.Phonecontent = this.$store.state.Phonecontent;
 
-    // console.log(
-    //   this.Phonecontent[this.id].floor_list[0].item_list[this.id2].fe_sku_pic
-    // );
+    this.searchgoods = this.$store.state.searchgoods;
+    this.searchid = this.$store.state.searchid;
+    // console.log(this.searchid);
+
+    // console.log(this.$store.state.searchgoods[this.searchid].sku_pic[0]);
+
     // 图片集合  图片不够循环生成4张
-    let img = this.Phonecontent[this.id].floor_list[0].item_list[this.id2]
-      .fe_sku_pic;
+    let img = this.$store.state.searchgoods[this.searchid].sku_pic[0];
     let arr = [];
 
     for (var i = 0; i < 4; i++) {
       arr.push(img);
     }
-
     this.thumb = arr;
 
-    // 商品信息，
-    this.phoneTitle = this.Phonecontent[this.id].floor_list[0].item_list[
-      this.id2
-    ].sku_list[0];
+    // console.log(this.searchgoods);
+    // 拿到对应的下标  图片可以了   把值赋给title  然后渲染
 
-    // console.log(this.phoneTitle);
-    // 商品价格、促销信息
+    // 接收id吧对应的商品内容给到phoneInfo
+    this.phoneInfo = this.searchgoods[this.searchid];
+    // console.log(this.phoneInfo);
+
+    // 商品价格、促销信息  --search固定
     let priceDetail = await this.$axios(
       "https://www.easy-mock.com/mock/5d4821222727b22ba5bbfd01/fenqile/pricce"
     );
 
     let flagCont = priceDetail.data.data.result_rows;
-
     this.flag1 = flagCont.present_list[0];
     this.flag2 = flagCont.present_list[1];
     this.flag3 = flagCont.present_list[2];

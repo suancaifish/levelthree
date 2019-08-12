@@ -2,8 +2,8 @@
   <div>
     <!-- 搜索组件 -->
     <div :style="fixedTop">
-      <van-search placeholder="请输入搜索关键词" v-model="value" :style="stylesea" />
-      <van-icon name="shopping-cart-o" :class="{topcart:istopcart}" />
+      <van-search placeholder="请输入搜索关键词" v-model="value" :style="stylesea" @click="onfocus"/>
+      <van-icon name="shopping-cart-o" @click="onSearch" :class="{topcart:istopcart}" />
     </div>
     <!-- 宫格 -->
     <van-grid :column-num="5" :border="false" :style="marginTop">
@@ -159,7 +159,13 @@ export default {
     };
   },
   methods: {
-    onSearch() {}
+    onSearch() {
+      
+    }
+    ,onfocus(){
+      // console.log(9);
+      this.$router.push('/Search');
+    }
   },
   async created() {
     // let navImgstes = await axios.post

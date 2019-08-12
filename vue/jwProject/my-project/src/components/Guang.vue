@@ -57,7 +57,7 @@ export default {
   margin-top: 0.222222rem;
   height: 1.777778rem;
   background-color: #fff;
-  border-top: 1px solid #eee;
+  border-top: 10px solid #eee;
 }
 .guang-tit {
   margin-left: 15px;

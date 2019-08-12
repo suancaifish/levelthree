@@ -3,7 +3,9 @@ import Vue from "vue";
 import {
     Input,
     Button,
-    Icon
+    Icon,
+    Drawer,
+    Message
 } from 'ant-design-vue';
 
 export default () => {
@@ -12,5 +14,7 @@ export default () => {
 
     Vue.use(Button);
     Vue.use(Input);
-    Vue.use(Icon)
+    Vue.use(Icon);
+    Vue.use(Drawer);
+    Vue.use(Message);
 }
