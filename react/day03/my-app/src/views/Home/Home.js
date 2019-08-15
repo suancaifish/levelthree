@@ -1,126 +1,106 @@
-import Sheet from '../Mine/Sheet'
+
 
 import React, {
     Component
 } from 'react'
-import { Route, Link } from "react-router-dom";
-import {
-    Layout,
-    Menu,
-    Breadcrumb,
-    Icon
-} from 'antd';
 
-const {
-    Header,
-    Content,
-    Footer,
-    Sider
-} = Layout;
-const {
-    SubMenu
-} = Menu;
+import { Layout, Menu, Breadcrumb, Icon } from 'antd';
 
-const Main= () => {
-    return (
-        <div>b组件</div>
-    )
-}
+const { SubMenu } = Menu;
+const { Header, Content, Sider } = Layout;
 
-
-
-export default class HeaderLay extends Component {
+export default class Home extends Component{
     constructor(props) {
         super(props)
-        this.state = {
-            title: '千锋',
-            collapsed: false
-        }
     }
-    onCollapse = collapsed => {
-        // console.log(collapsed);
-        this.setState({
-            collapsed
-        });
-    };
-    onBreakpoint = (broken) => {
-       
-    }
+
     render() {
         return (
-
-            <div >
-                <Layout style={{ minHeight: '100vh', background: '#fff' }}>
-                    <Sider collapsible collapsed={this.state.collapsed} onCollapse={this.onCollapse} style={{ background: '#fff' }}>
-                        <div className="logo" />
-                        <Menu theme="light" defaultSelectedKeys={['1']} mode="inline">
-                            <Menu.Item key="0" style={{ background: '#428bca', height: '64px', marginTop: 0 }}>
-                                {/* <Icon type="pie-chart" />
-                                <span></span> */}
-                            </Menu.Item>
-
-                            <SubMenu
-                                key="sub1"
-                                title={
-                                    <span style={{ color: '#2B7DBC', fontSize: '13px', fontWeight: 'bold' }}>
-                                        <Icon type="user" />
-                                        <span>学员后台</span>
-                                    </span>
-                                }
-                            >
-
-                            {/* {['匿名投诉','技术问题','项目上传','VIP','学员周报','我的资料','交费明细','参加考试','学员评价','教学测评'].map((item,index)=>{
-                                return (
-                                    <Menu.Item key={index}>{item}</Menu.Item>
-                                )
-                            })} */}
-                              <Menu.Item key="3" >
-                              <Link to="/sheet">表格 </Link>    </Menu.Item>
-                                <Menu.Item key="4">技术问题</Menu.Item>
-                                <Menu.Item key="5">项目上传</Menu.Item>
-                                <Menu.Item key="6">VIP</Menu.Item>
-                                <Menu.Item key="7">学员周报</Menu.Item>
-                                <Menu.Item key="8">我的资料</Menu.Item>
-                                <Menu.Item key="9">交费明细</Menu.Item>
-                                <Menu.Item key="10">参加考试</Menu.Item>
-                                <Menu.Item key="11">学员评价</Menu.Item>
-                                <Menu.Item key="12">教学测评</Menu.Item>
-
-
-                            </SubMenu>
-                            <SubMenu
-                                key="sub2"
-                                title={
-                                    <span>
-                                        <Icon type="barcode" />
-                                        <span>学员考勤</span>
-                                    </span>
-                                }
-                            >
-                                <Menu.Item key="6">学员请假</Menu.Item>
-                                <Menu.Item key="8">学员违纪</Menu.Item>
-                            </SubMenu>
-
+                <Layout>
+                    <Header className="header">
+                    <div className="logo" />
+                    <Menu
+                        theme="dark"
+                        mode="horizontal"
+                        defaultSelectedKeys={['2']}
+                        style={{ lineHeight: '64px' }}
+                    >
+                        <Menu.Item key="1">nav 1</Menu.Item>
+                        <Menu.Item key="2">nav 2</Menu.Item>
+                        <Menu.Item key="3">nav 3</Menu.Item>
+                    </Menu>
+                    </Header>
+                    <Layout>
+                    <Sider width={200} style={{ background: '#fff' }}>
+                        <Menu
+                        mode="inline"
+                        defaultSelectedKeys={['1']}
+                        defaultOpenKeys={['sub1']}
+                        style={{ height: '100%', borderRight: 0 }}
+                        >
+                        <SubMenu
+                            key="sub1"
+                            title={
+                            <span>
+                                <Icon type="user" />
+                                subnav 1
+                            </span>
+                            }
+                        >
+                            <Menu.Item key="1">option1</Menu.Item>
+                            <Menu.Item key="2">option2</Menu.Item>
+                            <Menu.Item key="3">option3</Menu.Item>
+                            <Menu.Item key="4">option4</Menu.Item>
+                        </SubMenu>
+                        <SubMenu
+                            key="sub2"
+                            title={
+                            <span>
+                                <Icon type="laptop" />
+                                subnav 2
+                            </span>
+                            }
+                        >
+                            <Menu.Item key="5">option5</Menu.Item>
+                            <Menu.Item key="6">option6</Menu.Item>
+                            <Menu.Item key="7">option7</Menu.Item>
+                            <Menu.Item key="8">option8</Menu.Item>
+                        </SubMenu>
+                        <SubMenu
+                            key="sub3"
+                            title={
+                            <span>
+                                <Icon type="notification" />
+                                subnav 3
+                            </span>
+                            }
+                        >
+                            <Menu.Item key="9">option9</Menu.Item>
+                            <Menu.Item key="10">option10</Menu.Item>
+                            <Menu.Item key="11">option11</Menu.Item>
+                            <Menu.Item key="12">option12</Menu.Item>
+                        </SubMenu>
                         </Menu>
                     </Sider>
-                    <Layout>
-                        <Header style={{ background: '#428bca', padding: 0 }} />
-                        <Content style={{ margin: '0 16px' }}>
-                            <Breadcrumb style={{ margin: '16px 0' }}>
-                                <Breadcrumb.Item>User</Breadcrumb.Item>
-                                <Breadcrumb.Item>Bill</Breadcrumb.Item>
-                            </Breadcrumb>
-                            <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
-                           
-                            <Route path="/sheet" component={Sheet} />
-                            </div>
+                    <Layout style={{ padding: '0 24px 24px' }}>
+                        <Breadcrumb style={{ margin: '16px 0' }}>
+                        <Breadcrumb.Item>Home</Breadcrumb.Item>
+                        <Breadcrumb.Item>List</Breadcrumb.Item>
+                        <Breadcrumb.Item>App</Breadcrumb.Item>
+                        </Breadcrumb>
+                        <Content
+                        style={{
+                            background: '#fff',
+                            padding: 24,
+                            margin: 0,
+                            minHeight: 280,
+                        }}
+                        >
+                        Content
                         </Content>
-                        <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+                    </Layout>
                     </Layout>
                 </Layout>
-
-
-            </div>
-        );
+        )
     }
 }

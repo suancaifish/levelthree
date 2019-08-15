@@ -1,22 +1,22 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import './App.css';
+import Home from "./";
 
 
 // 路由组件
-import Home from './views/Home/Home'
+
 
 
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        <Link to="/">home</Link>
-      </div>
-      <Route path="/" component={Home}></Route>
+      <div>
+        <Link to="/"></Link>
 
-     
+        <Route path="/" exact component={Home}></Route>
+      </div>
     </Router>
   );
 }
