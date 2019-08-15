@@ -1,7 +1,13 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route,Redirect } from "react-router-dom";
 import './App.css';
-import Home from "./";
+// 头部入口文件
+import Header from './components/Header'
+// 默认进入首页
+import HomePage from './views/Home/Home';
+
+
+// import Mine from "./views/Mine/Mine";
 
 
 // 路由组件
@@ -13,9 +19,14 @@ function App() {
   return (
     <Router>
       <div>
-        <Link to="/"></Link>
-
-        <Route path="/" exact component={Home}></Route>
+       <Header/>
+       <Route path='/' excat conponent={HomePage}></Route>
+       {/* <Route path='/mine' conponent={Mine}></Route> */}
+       <Redirect
+        to={{
+          pathname: "/home",
+        }}
+      />
       </div>
     </Router>
   );
