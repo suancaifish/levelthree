@@ -6,13 +6,13 @@ import 'antd/dist/antd.css';
 
 // import * as serviceWorker from './serviceWorker';
 
-// import App from './App'
-import Header from './components/Header';
-
+import App from './App'
+// import Header from './components/Header';
+import Main from './Main'
 
 
 ReactDOM.render(
-    <Header />
+    <Main />
     , document.getElementById('root')
 
 

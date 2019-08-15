@@ -28,14 +28,13 @@ export default class HeaderLay extends Component {
         }
     }
     onCollapse = collapsed => {
-        console.log(collapsed);
+        // console.log(collapsed);
         this.setState({
             collapsed
         });
     };
     onBreakpoint = (broken) => {
-        console.log(1);
-        console.log(broken);
+       
     }
     render() {
         return (
@@ -60,8 +59,14 @@ export default class HeaderLay extends Component {
                                     </span>
                                 }
                             >
-                                <Menu.Item key="3" onBreakpoint={this.onBreakpoint}>匿名投诉</Menu.Item>
-                                <Menu.Item key="4">技术问题</Menu.Item>
+
+                            {['匿名投诉','技术问题','项目上传','VIP','学员周报','我的资料','交费明细','参加考试','学员评价','教学测评'].map((item,index)=>{
+                                return (
+                                    <Menu.Item key={index}>{item}</Menu.Item>
+                                )
+                            })}
+                                <Menu.Item key="3" >匿名投诉</Menu.Item>
+                                {/* <Menu.Item key="4">技术问题</Menu.Item>
                                 <Menu.Item key="5">项目上传</Menu.Item>
                                 <Menu.Item key="6">VIP</Menu.Item>
                                 <Menu.Item key="7">学员周报</Menu.Item>
@@ -69,7 +74,7 @@ export default class HeaderLay extends Component {
                                 <Menu.Item key="9">交费明细</Menu.Item>
                                 <Menu.Item key="10">参加考试</Menu.Item>
                                 <Menu.Item key="11">学员评价</Menu.Item>
-                                <Menu.Item key="10">教学测评</Menu.Item>
+                                <Menu.Item key="12">教学测评</Menu.Item> */}
 
 
                             </SubMenu>
