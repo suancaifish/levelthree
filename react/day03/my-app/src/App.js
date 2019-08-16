@@ -22,6 +22,7 @@ function App() {
        <Header/>
        <Route path='/' excat conponent={HomePage}></Route>
        {/* <Route path='/mine' conponent={Mine}></Route> */}
+       {/* 重定向 */}
        <Redirect
         to={{
           pathname: "/home",

@@ -9,8 +9,8 @@ import HomePage from '../views/Home/Home';
 import MinePage from '../views/Mine/Mine';
 import SettingPage from '../views/Setting/Setting';
 
-const { SubMenu } = Menu;
-const { Header, Content, Sider } = Layout;
+
+const { Header } = Layout;
 
 
 

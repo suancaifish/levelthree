@@ -1,7 +1,7 @@
 import React, {
     Component
 } from 'react'
-import { Route, Link } from "react-router-dom";
+// import { Route, Link } from "react-router-dom";
 import { Table } from 'antd';
 const columns = [
     {
@@ -41,9 +41,7 @@ const columns = [
     },
   ];
 export default class Sheet extends Component {
-    constructor(props) {
-        super(props)
-    }
+  
 
     
     render() {
