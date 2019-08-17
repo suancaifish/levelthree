@@ -11,7 +11,8 @@ export default new Vuex.Store({
     id2: 0,
     // search to details02
     searchgoods: [],
-    searchid: 0
+    searchid: 0,
+    loginState: '立即登录'
 
   },
   mutations: {

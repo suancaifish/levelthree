@@ -15,6 +15,11 @@ Vue.prototype.$axios = axios
 
 Vue.config.productionTip = false
 
+// 密码MD5加密
+import md5 from 'js-md5';
+Vue.prototype.$md5 = md5;
+
+
 import Vant from './vants/index';
 Vant();
 

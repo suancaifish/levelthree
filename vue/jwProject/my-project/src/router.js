@@ -9,10 +9,11 @@ import Details02 from './views/Details02.vue';
 import Login from './views/Login.vue';
 import Search from './views/Search.vue';
 import Cart from './views/Cart.vue';
+import Store from './store'
 
 Vue.use(Router)
 
-export default new Router({
+const routers = new Router({
   // mode: 'history',
   routes: [{
       path: '/tabbar',
@@ -70,3 +71,22 @@ export default new Router({
     }
   ]
 })
+
+// 路由守卫
+routers.beforeEach((to, from, next) => {
+  // console.log(from);
+  let states = Store.state.loginState;
+  if (to.path == '/tabbar/Cart' && states == '立即登录') {
+    routers.push({
+      name: 'Login'
+    });
+  } else {
+    // Router.push('/Login')
+    next();
+
+  }
+
+})
+
+
+export default routers;

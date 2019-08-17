@@ -41,7 +41,11 @@ import {
     //文字提醒
     //粘性布局
     Sticky,
-    SubmitBar 
+    SubmitBar ,
+    // 复选框
+    Checkbox, CheckboxGroup,
+    // Stepper 步进器
+    Stepper
 
 } from "vant";
 
@@ -78,5 +82,6 @@ export default () => {
     Vue.use(Divider);
     Vue.use(Sticky);
     Vue.use(SubmitBar);
-
+    Vue.use(Checkbox).use(CheckboxGroup);
+    Vue.use(Stepper);
 }
