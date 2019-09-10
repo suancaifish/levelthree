@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "Wsearch":"../../components/Wsearch/Wsearch",
+    "Wgrid": "../../components/Wgrid/Wgrid",
+    "Wlist": "../../components/Wlist/Wlist",
+    "Wpartition":"../../components/Wpartition/Wpartition"
+  },
+ 
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#eec5e3",
+    "navigationBarTitleText": "我的主页资料"
+   
+  
+}

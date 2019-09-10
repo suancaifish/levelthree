@@ -1,0 +1,10 @@
+<van-card wx:for="{{goods}}"
+wx:key="{{index}}"
+id="{{index}}"
+  num="{{item.num}}"
+  price="{{item.restaurant.rating_count}}"
+  desc="{{item.restaurant.name}}"
+  title="{{item.restaurant.name}}"
+  thumb="{{item.restaurant.image_path}}"
+  bindtap="navToDetailPage"
+/>

@@ -296,6 +296,7 @@ export default {
     window.onscroll = null;
   },
   activated() {
+    //把获取到的地址值赋给adder
     this.adder =
       this.$store.state.province +
       this.$store.state.city +

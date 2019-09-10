@@ -1,0 +1,7 @@
+
+<Wsearch></Wsearch>
+<Wgrid grids="{{grids}}"/>
+<Wpartition/>
+<Wlist goods="{{goods}}"></Wlist>
+
+

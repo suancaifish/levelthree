@@ -23,7 +23,7 @@ export default {
   methods: {
     onconfirm(val) {
       this.confirmList = val;
-
+      //把用户选择的地址存到vuex的store里面
       this.title = "确认地址";
       this.$store.state.province = val[0].name;
       this.$store.state.city = this.confirmList[1].name;

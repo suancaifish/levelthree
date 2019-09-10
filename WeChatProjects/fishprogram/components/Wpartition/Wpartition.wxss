@@ -1,0 +1,36 @@
+/* components/Wpartition/Wpartition.wxss */
+.partition{
+  display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    height: 1.96rem;
+   
+    font-size: 16px;
+    color: #000;
+    background-color: #fff;
+}
+.partition::before {
+    display: block;
+    content: "";
+    width: 1.533333rem; 
+    height: .026667rem;
+    background-color: #999;
+  margin-right: .346667rem;
+}
+.partition::after {
+    display: block;
+    content: "";
+    width: 1.533333rem; 
+    height: .026667rem;
+    background-color: #999;
+  margin-left: .346667rem;
+}
